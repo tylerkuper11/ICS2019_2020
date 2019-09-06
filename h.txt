@@ -1,4 +1,4 @@
 Class: Capstone-Integrated Computer Programming
 2019-2020
-Name: Tyler Kuper
+Name: Tyler kuper
 poopy stinky doodoo
