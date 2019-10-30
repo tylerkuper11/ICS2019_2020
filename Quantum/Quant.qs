@@ -20,19 +20,26 @@ namespace ICS.Quantum
 	
 	operation QubitPlay():Unit
 	{
-		using (q = Qubit())
-		{
-			H(q);
-			if(M(q)==Zero)
-			{
-				Message("It was zero!");
-			} else {
-				Message("It was one!");
+		mutable count = 0;
+		let maxCount = 1000;
+		
+		using(qs[] = Qubit(maxCount)){
+		for (i in 1 .. maxCount){
+				X(qs[i-1]);
+				H(qs[i-1]);
+				if(M(qs[i-1])==Zero)
+				{
+					Message("It was zero!");
+				} else {
+					Message("It was one!");
+					set count += 1; // count = count + 1;
+				}
+				// elif
+				
+				Reset(q);
 			}
-			// elif
-			
-			Reset(q);
 		}
+		Message($"There were {maxCount-count} zeroes and {count} ones");
 	}
 	
 }
