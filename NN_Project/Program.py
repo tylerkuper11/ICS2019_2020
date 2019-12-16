@@ -7,10 +7,10 @@ from sklearn.utils import shuffle
 from sklearn.neural_network import MLPClassifier
 
 data=pandas.read_csv("ow.csv",header=None)
-# ~ print(data)
+print(data)
 
-# ~ sns.pairplot( data=data,vars=(0,1,2,3), hue=4 )
-# ~ plt.show()
+graph = sns.pairplot( data=data,vars=(0,1,2,3), hue=4 )
+plt.show(graph)
 
 data=np.array(data)
 
@@ -30,7 +30,7 @@ testy=y[61:]
 
 clf = MLPClassifier(activation='identity', alpha=0.0001, batch_size='auto',
               beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
-              hidden_layer_sizes=[5], learning_rate='constant',
+              hidden_layer_sizes=[10], learning_rate='constant',
               learning_rate_init=0.001, max_iter=10000, momentum=0.9,
               n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
               random_state=0, shuffle=True, solver='adam', tol=0.0001,
@@ -60,12 +60,12 @@ print(cv_results)
 
 
 ####GRID SEARCH####
-from sklearn.model_selection import GridSearchCV
+# ~ from sklearn.model_selection import GridSearchCV
 # ~ parameters = {'hidden_layer_sizes':([3], [10], [3,3], [3,3,3]), 'activation':('identity', 'logistic')}
-parameters = {'hidden_layer_sizes':([1],[2],[3],[4],[5],[6],[7],[8],[9],[10]), 'activation':('identity', 'logistic')}
-gs = GridSearchCV(clf,parameters)
-gs.fit(X,y)
+# ~ parameters = {'hidden_layer_sizes':([1],[2],[3],[4],[5],[6],[7],[8],[9],[10]), 'activation':('identity', 'logistic')}
+# ~ gs = GridSearchCV(clf,parameters)
+# ~ gs.fit(X,y)
 # ~ print(gs.best_estimator_)
-print(gs.cv_results_)
+# ~ print(gs.cv_results_)
 
 
